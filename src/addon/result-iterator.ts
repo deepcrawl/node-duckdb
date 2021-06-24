@@ -27,13 +27,13 @@ export class ResultIterator<T> implements IterableIterator<T> {
    * @remarks
    * Note, this may produce a `heap out of bounds` error in case when there is too much data. Either use the {@link ResultIterator.fetchRow | fetchRow} or the  {@link Connection.execute | Connection.execute} method when there is a lot of data.
    */
-  public fetchAllRows(): T[] {
+  public fetchAllRows(): readonly T[] {
     return <T[]>[...this];
   }
   /**
    * Describe the result set schema.
    */
-  public describe(): string[][] {
+  public describe(): Readonly<Array<[string, string]>> {
     return this.resultInterator.describe();
   }
   /**
